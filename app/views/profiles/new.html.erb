@@ -1,0 +1,27 @@
+<h2>Создание профиля</h2>
+<%= form_for :profile, url: new_profile_path(@profile) do |f| %>
+
+  <div class="field">
+    <%= f.label "Фамилия" %><br />
+    <%= f.email_field :surname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Имя" %><br />
+    <%= f.email_field :name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Отчество" %><br />
+    <%= f.password_field :patronymic %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Дата рождения" %><br />
+    <%= f.password_field :date_of_birth%>
+  </div><br />
+
+  <div class="actions">
+    <%= f.submit "Создать" %>
+  </div>
+<% end %>

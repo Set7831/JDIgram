@@ -7,9 +7,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      header{
+        padding: 10px;
+      }
+
+    </style>
   </head>
 
-  <body>
+  <body >
+  <header class="nav navbar-top">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="navbar-brand">Company name</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav navbar"><%= link_to 'Главная страница', root_path %></li>
+          <li class="nav navbar"><%= link_to "О проекте",   '#' %></li>
+          <li class="nav navbar"><%= link_to 'Войти', new_user_session_path %></li>
+          <li class="nav navbar"><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
+        </ul>
+      </nav>
+    </div></br>
+  </header>
+
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>
