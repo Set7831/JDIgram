@@ -1,8 +1,9 @@
 class User < ApplicationRecord
 
   has_one :profile
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  accepts_nested_attributes_for :profile, :allow_destroy => true
+
   attr_writer :login
 
   def login
@@ -10,7 +11,7 @@ class User < ApplicationRecord
   end
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :confirmable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
+         :recoverable, :confirmable, :rememberable, :trackable, :validatable
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

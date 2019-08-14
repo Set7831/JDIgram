@@ -3,22 +3,22 @@
 
   <div class="field">
     <%= f.label "Фамилия" %><br />
-    <%= f.email_field :surname, autofocus: true %>
+    <%= f.text_field :surname%>
   </div>
 
   <div class="field">
     <%= f.label "Имя" %><br />
-    <%= f.email_field :name, autofocus: true%>
+    <%= f.text_field :name%>
   </div>
 
   <div class="field">
     <%= f.label "Отчество" %><br />
-    <%= f.password_field :patronymic %>
+    <%= f.text_field :patronymic %>
   </div>
 
   <div class="field">
     <%= f.label "Дата рождения" %><br />
-    <%= f.password_field :date_of_birth%>
+    <%= f.date_field :date_of_birth%>
   </div><br />
 
   <div class="actions">
