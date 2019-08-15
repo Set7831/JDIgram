@@ -19,9 +19,9 @@
 
   <header class="nav navbar-top">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="navbar-brand">Company name</h5>
+      <h5 class="navbar-brand">JDIgram</h5>
       <% if user_signed_in? %>
-      <h5 class="navbar-brand">Вы вошли как: <%= current_user.login%></h5>
+      <h5 class="navbar-brand">Вы вошли как: <%= current_user.profile.name %></h5>
       <% end %>
       <nav class="my-2 my-md-0 mr-md-3">
         <ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdown04">
                 <a class="dropdown-item" href="#">Друзья</a>
                 <a class="dropdown-item" href="#">Уведомления</a>
-                <a class="dropdown-item" ></a>
+                <a class="dropdown-item" ><%= link_to 'Настройки', profile_path %></a>
               </div>
 
 

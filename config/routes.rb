@@ -7,9 +7,13 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users do
-    resources :profile
-  end
+  #resource :profile, only: [:edit, :update]
+
+
+    get '/profile', to: 'profile#edit'
+    patch '/profile', to: 'profile#update'
+  get '/profile', to: 'profile#edit_password', as: :edit_password
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
