@@ -5,10 +5,12 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile #, :allow_destroy => true
 
   attr_writer :login
+  attr_accessor :current_password
 
   def login
     @login || self.username || self.email
   end
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :confirmable, :rememberable, :trackable, :validatable

@@ -68,6 +68,6 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 gem 'haml'
-
+gem 'haml-rails'
 gem 'devise'
 
