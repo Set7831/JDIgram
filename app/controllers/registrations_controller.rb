@@ -1,7 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   def new
     build_resource()
     self.resource.profile = Profile.new
@@ -12,14 +10,32 @@ class RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  #def update_resource(resource, params)
-  #  resource.update_without_password(params)
-  #end
+  def update
+    account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
+    @user = User.find(current_user.id)
+
+    if needs_password?
+      successfully_updated = @user.update_with_password(account_update_params)
+    else
+      account_update_params.delete('password')
+      account_update_params.delete('password_confirmation')
+      account_update_params.delete('current_password')
+      successfully_updated = @user.update_attributes(account_update_params)
+    end
+
+    if successfully_updated
+      set_flash_message :notice, :updated
+      sign_in @user, :bypass => true
+      redirect_to edit_user_registration_path
+    else
+      render 'edit'
+    end
+  end
+
+  end
 
   private
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :username, :password_confirmation, { profile_attributes: [:id, :surname, :name, :patronymic, :date_of_birth] }])
-    devise_parameter_sanitizer.permit(:account_update,  keys: [:email, :password, :username, :password_confirmation, { profile_attributes: [:id, :surname, :name, :patronymic, :date_of_birth] }])
+  def needs_password?
+    params[:user][:password].present?
   end
-end
