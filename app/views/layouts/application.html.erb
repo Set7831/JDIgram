@@ -23,12 +23,14 @@
       <nav class="my-2 my-md-0 mr-md-3">
 
         <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Найти">
             </div>
             <button type="submit" class="btn btn-default">Поиск</button>
           </form>
+          <% end %>
           <li class="btn btn-outline-primary"><%= link_to root_path do %><i class="fa fa-home fa-fw"></i>
               <% end %>
               </li>
