@@ -6,6 +6,10 @@ class ProfileController < ApplicationController
 
   end
 
+  def show
+
+  end
+
   def update
     if params[:user][:password].blank?
       params[:user].delete(:password)

@@ -8,43 +8,48 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
     <style>
-      header{
-        padding: 10px;
-      }
 
     </style>
   </head>
 
   <body >
 
-  <header class="nav navbar-top">
+  <header class="nav navbar-default navbar-top ">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <h5 class="navbar-brand">JDIgram</h5>
       <% if user_signed_in? %>
-      <h5 class="navbar-brand">Вы вошли как: <%= current_user.profile.name %></h5>
+      <h5 class="navbar-brand">Вы вошли как: <%= current_user.login %></h5>
       <% end %>
       <nav class="my-2 my-md-0 mr-md-3">
+
         <ul class="nav navbar-nav navbar-right">
-          <li class="btn btn-outline-primary"><%= link_to 'Главная страница', root_path %></li>
-          <li class="btn btn-outline-primary"><%= link_to "О проекте",   '#' %></li>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Найти">
+            </div>
+            <button type="submit" class="btn btn-default">Поиск</button>
+          </form>
+          <li class="btn btn-outline-primary"><%= link_to root_path do %><i class="fa fa-home fa-fw"></i>
+              <% end %>
+              </li>
           <% if user_signed_in? %>
+            <li class="btn btn-outline-primary"><%= link_to profile_show_path do %><i class="fa fa-user fa-fw"></i>
+                <% end %>
+              </li>
             <li class="btn btn-outline-primary">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Профиль</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="#">Друзья</a>
-                <a class="dropdown-item" href="#">Уведомления</a>
-                <a class="dropdown-item" ><%= link_to 'Настройки', edit_user_registration_path %></a>
-              </div>
-
-
-            <li class="btn btn-outline-primary">
-              <%= link_to "Выход", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <i class="fa fa-sign-out fa-fw"></i>
+                <% end %>
             </li>
                 <% else %>
                   <li class="btn btn-outline-primary">
-                    <%= link_to 'Войти', new_user_session_path, class: "nav-link" %></li>
+                    <%= link_to new_user_session_path, class: "nav-link" do %>
+                      <i class="fa fa-sign-in fa-fw"></i>
+                    <% end %>
                   <li class="btn btn-outline-primary">
-                    <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "nav-link" %>
+                    <%= link_to new_user_registration_path, class: "nav-link" do %>
+                      <i class="fa fa-user-plus fa-fw"></i>
+                    <% end %>
                   </li>
             <% end %>
         </ul>

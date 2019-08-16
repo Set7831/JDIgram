@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   #resource :profile, only: [:edit, :update]
 
 
-    get '/profile', to: 'profile#edit'
-    patch '/profile', to: 'profile#update'
+  get '/profile', to: 'profile#edit'
+  patch '/profile', to: 'profile#update'
+  get '/profile/show', to: 'profile#show'
+
 
 
 

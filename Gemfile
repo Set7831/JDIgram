@@ -69,5 +69,12 @@ gem 'jquery-rails'
 
 gem 'haml'
 gem 'haml-rails'
+
 gem 'devise'
+
+gem 'bootstrap_form'
+
+gem 'font-awesome-sass'
+
+gem 'font-awesome-rails'
 

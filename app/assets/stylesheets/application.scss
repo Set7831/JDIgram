@@ -10,6 +10,67 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.navbar-default {
+  background-color: rgba(174, 60, 89, 0.65);
+  border-color: #ae48a9;
+  border-radius:10px;
+}
+.navbar-default .navbar-brand {
+  color: #fafeff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #050506;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fafeff;
+}
+.navbar-default .navbar-nav > h5 {
+  color: #f13a3c;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #050506;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #050506;
+  background-color: rgba(174, 60, 89, 0.65);
+  border-radius:10px;
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #d1ffed;
+  background-color: #27ae60;
+}
+.dropdown-item {
+  color: #050506;
+}
+.btn-outline-primary{
+  border-radius:10px;
+
+}
+.profile_show{
+  padding-top: 40px;
+}
+header{
+  padding: 10px;
+}
+.fa.fa-home.fa-fw {font-size: 40px;}
+.fa.fa-user.fa-fw {font-size: 40px;}
+.fa.fa-sign-out.fa-fw {font-size: 40px;}
+.fa.fa-sign-in.fa-fw {font-size: 40px;}
+.fa.fa-user-plus.fa-fw {font-size: 40px;}

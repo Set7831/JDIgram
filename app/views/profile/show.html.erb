@@ -1,0 +1,14 @@
+<div class="container profile_show">
+  <div class="row">
+    <div class="col-md-4">
+      <p>img</p>
+
+    </div>
+    <div class="col-md-8">
+      <p><%= current_user.username %> | <%= link_to 'Редактировать профиль', edit_user_registration_path %></p>
+      <p> Друзей | Еще чего то там</p>
+      <p><%= current_user.profile.name %></p>
+    </div>
+
+    </div>
+  </div>
