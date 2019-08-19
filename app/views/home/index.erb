@@ -1,7 +1,24 @@
-<div class="container text-center">
+<div class="container">
   <h1>Welcome to the Start Page</h1>
-  <% if user_signed_in? %>
-    <h5 class="navbar-brand"></h5>
-  <% end %>
+
+    <div class="row">
+      <div class="col-md-4">
+        <p>dsfsd</p>
+      </div>
+      <div class="col-md-4 text-right">
+        <div class="row">
+        <% if user_signed_in? %>
+        <%= image_tag current_user.image.thumb.url, class: "img_index", height: "50px", weight: "50px" %>
+        <%= current_user.username %>
+          <p><%= current_user.profile.name %></p>
+
+        <% end %>
+        </div>
+      </div>
+      <div class="col-md-4 text-right">
+
+      </div>
+    </div>
+
 
 </div>
