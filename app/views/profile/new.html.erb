@@ -2,6 +2,11 @@
 <%= form_for :profile, url: new_profile_path(@profile) do |f| %>
 
   <div class="field">
+    <%= f.label "Загрузить автар" %><br />
+    <%= f.file_field :image%>
+  </div><br />
+
+  <div class="field">
     <%= f.label "Фамилия" %><br />
     <%= f.text_field :surname%>
   </div>
@@ -20,6 +25,7 @@
     <%= f.label "Дата рождения" %><br />
     <%= f.date_field :date_of_birth%>
   </div><br />
+
 
   <div class="actions">
     <%= f.submit "Создать" %>

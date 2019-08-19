@@ -7,6 +7,8 @@ class User < ApplicationRecord
   attr_writer :login
   attr_accessor :current_password
 
+  mount_uploader :image, AvatarUploader
+
   def login
     @login || self.username || self.email
   end

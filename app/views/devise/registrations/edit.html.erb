@@ -40,6 +40,13 @@
         <%= f.text_field :username, class: "form-control" %>
       </div>
 
+
+      <div class="form-group">
+      <img class="hidden image_to_upload" />
+      <br/><br/>
+      <%= f.file_field :image, class: 'photo_upload' %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>

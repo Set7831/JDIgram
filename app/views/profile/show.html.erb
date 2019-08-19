@@ -1,7 +1,7 @@
 <div class="container profile_show">
   <div class="row">
     <div class="col-md-4">
-      <p>img</p>
+        <p><%= link_to(image_tag(current_user.image.thumb.url, alt: 'Image'), current_user.image.url, target: '_blank') if current_user.image? %></p>
 
     </div>
     <div class="col-md-8">
