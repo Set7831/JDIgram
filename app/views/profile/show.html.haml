@@ -1,14 +1,19 @@
+
 .profile-show
-  .row
-    .col-md-4.profile-avatar
-      %p= link_to(image_tag(current_user.image.thumb.url, alt: 'Image', :class => 'img-fluid rounded-circle'), current_user.image.url, target: '_blank') if current_user.image?
-    .col-md-6.profile-info
-      %p
-        = current_user.username
-        | #{link_to 'Редактировать профиль', edit_user_registration_path}
-      %p Друзей | Еще чего то там
-      %p= current_user.profile.name
-  .row
-    .col-md-3
-    .col-md-3
-    .col-md-3
+   .row
+      .col-md-4.profile-avatar
+         %p= link_to(image_tag(@user.image.thumb.url, alt: 'Image', :class => 'img-fluid rounded-circle'), @user.image.url, target: '_blank') if @user.image?
+      .col-md-6.profile-info
+         %p
+         = @user.username
+         - if current_user.id == @user.id
+         = puts @user.id
+            = link_to "Редактировать профиль", edit_user_registration_path
+         %p Друзей | Еще чего то там
+         %p= @profile.name
+         - if current_user.id != @user.id
+            %p= @profile.surname
+      .row
+      .col-md-3
+      .col-md-3
+      .col-md-3

@@ -1,0 +1,7 @@
+%h1 Все пользователи
+%p
+  - @user.each do |user|
+    = user.email
+    %br/
+    =link_to user.login, users_path(id: user.id)
+    %br/

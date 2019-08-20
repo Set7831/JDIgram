@@ -2,7 +2,12 @@
 - if user_signed_in?
   .row
     .col-md-8.news-feed
+      - @user.each do |user|
+        =link_to user.login, profile_show_path(id: user.profile.id, user_id: user.id)
+        %br/
       %p News
+
+      = link_to 'USERS' , users_index_path
     - if user_signed_in? && current_user.image?
       .col-md-1.mini-profile-avatar
         - if user_signed_in? && current_user.image?
