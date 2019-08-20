@@ -1,0 +1,70 @@
+%h2 Редактирование профиля
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = devise_error_messages!
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#panel1"} Основные настройки
+    %li
+      %a{"data-toggle" => "tab", :href => "#panel2"} Безопасность
+  .tab-content
+    #panel1.tab-pane.fade.in.active
+      %h3 Основные настройки
+      %p
+      .form-group
+        = f.fields_for :profile do |profile_form|
+          .form-group
+            = profile_form.label :surname, "Фамилия"
+            = profile_form.text_field :surname, class: "form-control"
+          .form-group
+            = profile_form.label :name, "Имя"
+            = profile_form.text_field :name, class: "form-control"
+          .form-group
+            = profile_form.label :patronymic, "Отчество"
+            = profile_form.text_field :patronymic, class: "form-control"
+          .form-group
+            = profile_form.label :date_of_birth, "Дата рождения"
+            = profile_form.date_field :date_of_birth, class: "form-control"
+        .form-group
+          = f.label :email, "Email"
+          %br/
+          = f.email_field :email, autofocus: true, class: "form-control", autocomplete: "email"
+        .form-group
+          = f.label :username, "Логин"
+          %br/
+          = f.text_field :username, class: "form-control"
+        .form-group
+          %img.hidden.image_to_upload/
+          %br/
+          %br/
+          = f.file_field :image, class: 'photo_upload'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+    #panel2.tab-pane.fade
+      %h3 Безопасность
+      %p
+      .form-group
+        = f.label :password, "Пароль"
+        %i (оставьте пустым, если вы не хотите его менять)
+        %br/
+        = f.password_field :password, class: "form-control", autocomplete: "off"
+        - if @minimum_password_length
+          %br/
+          %em
+            = @minimum_password_length
+            символом минимум
+      .form-group
+        = f.label :password_confirmation, "Подтверждение пароля"
+        %br/
+        = f.password_field :password_confirmation, class: "form-control", autocomplete: "off"
+      .form-group
+        = f.label :current_password, "Текущий пароль"
+        %i (нам нужен ваш текущий пароль для подтверждения изменений)
+        %br/
+        = f.password_field :current_password, class: "form-control", autocomplete: "off"
+  .actions
+    = f.submit "Обновить", class: "btn btn-primary"
+%h3 Удалить мой аккаунт
+%p
+  Недовольны? #{button_to "Удалить мой аккаунт", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary"}
+= link_to "Назад", :back , class: "btn btn-primary"

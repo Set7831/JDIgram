@@ -1,0 +1,17 @@
+%h2.text-center Авторизация
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-group
+    = f.label :login, "Email или Логин"
+    %br/
+    = f.text_field :login, class: "form-control", autofocus: true
+  .form-group
+    = f.label :password, "Пароль"
+    %br/
+    = f.password_field :password, class: "form-control", autocomplete: "off"
+  - if devise_mapping.rememberable?
+    .form-group
+      = f.check_box :remember_me
+      = f.label :remember_me, "Запомнить меня"
+  .actions
+    = f.submit "Войти", class: "btn btn-primary"
+= render "devise/shared/links"

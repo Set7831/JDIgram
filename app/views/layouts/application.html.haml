@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title JDIgram
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'true'
+    :css
+
+  %body
+    %header.nav.navbar-default.navbar-top
+      .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.shadow-sm
+        %h5.navbar-brand JDIgram
+        - if user_signed_in?
+          %h5.navbar-brand
+            Вы вошли как: #{current_user.login}
+        %nav.my-2.my-md-0.mr-md-3
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %form.navbar-form.navbar-left{:role => "search"}
+                .form-group
+                  %input.form-control{:placeholder => "Найти", :type => "text"}/
+                %button.btn.btn-default{:type => "submit"} Поиск
+            %li.btn.btn-outline-primary
+              = link_to root_path do
+                %i.fa.fa-home.fa-fw
+            - if user_signed_in?
+              %li.btn.btn-outline-primary
+                = link_to profile_show_path do
+                  %i.fa.fa-user.fa-fw
+              %li.btn.btn-outline-primary
+                = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
+                  %i.fa.fa-sign-out.fa-fw
+            - else
+              %li.btn.btn-outline-primary
+                = link_to new_user_session_path, class: "nav-link" do
+                  %i.fa.fa-sign-in.fa-fw
+              %li.btn.btn-outline-primary
+                = link_to new_user_registration_path, class: "nav-link" do
+                  %i.fa.fa-user-plus.fa-fw
+    .container
+      = yield

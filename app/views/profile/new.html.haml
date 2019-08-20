@@ -1,0 +1,26 @@
+%h2 Создание профиля
+= form_for :profile, url: new_profile_path(@profile) do |f|
+  .field
+    = f.label "Загрузить автар"
+    %br/
+    = f.file_field :image
+  %br/
+  .field
+    = f.label "Фамилия"
+    %br/
+    = f.text_field :surname
+  .field
+    = f.label "Имя"
+    %br/
+    = f.text_field :name
+  .field
+    = f.label "Отчество"
+    %br/
+    = f.text_field :patronymic
+  .field
+    = f.label "Дата рождения"
+    %br/
+    = f.date_field :date_of_birth
+  %br/
+  .actions
+    = f.submit "Создать"
