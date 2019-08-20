@@ -94,22 +94,14 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => "jdigram-andrey.herokuapp.com" }
 
-  ActionMailer::Base.delivery_method = :smtp
-
-  host = ENV["APP_HOST_NAME"]
-
   ActionMailer::Base.smtp_settings = {
-      port: ENV['MAILGUN_SMTP_PORT'],
-      address: ENV['MAILGUN_SMTP_SERVER'],
-      user_name: ENV['MAILGUN_SMTP_LOGIN'],
-      password: ENV['MAILGUN_SMTP_PASSWORD'],
-      domain: host,
-      authentication: :plain,
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :domain => 'jdigram-andrey.herokuapp.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
   }
 
-  #specify default URL for links that are sent in the emails (i.e confirmation email)
-  config.action_mailer.default_url_options = {
-      host: host
-  }
-
-end
+  end
