@@ -84,7 +84,7 @@
 header{
   padding: 10px;
 }
-.col-md-8.news-feed{
+.col-md-6.news-feed{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   margin-right: 10px;
   margin-left: 10px;
@@ -98,6 +98,15 @@ header{
 .col-md-6.profile-info{
   margin-right: 10px;
   margin-left: 15px;
+}
+.img-start-page{
+  display: block;
+  margin: auto;
+}
+
+.image_to_upload {
+  height: 300px;
+  width: auto;
 }
 
 .fa.fa-home.fa-fw {font-size: 30px;}

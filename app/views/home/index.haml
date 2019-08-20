@@ -1,17 +1,28 @@
-%h1 Welcome to the Start Page
+%h1 News Feed
 - if user_signed_in?
   .row
-    .col-md-8.news-feed
+    .col-md-6.news-feed
+      = link_to 'USERS' , users_index_path
+      %hr
       - @user.each do |user|
         =link_to user.login, profile_show_path(id: user.profile.id, user_id: user.id)
+        - if user_signed_in? && user.image.blank?
+          %p
+            Зарегистрировался: #{user.created_at}
         %br/
-      %p News
+        - if user_signed_in? && user.image?
+          %p
+            Добавил фотографию:
+          =image_tag user.image.thumb.url, class: "img-start-page", height: "200px", weight: "200px"
+        %br/
+        %hr
 
-      = link_to 'USERS' , users_index_path
+
     - if user_signed_in? && current_user.image?
       .col-md-1.mini-profile-avatar
         - if user_signed_in? && current_user.image?
-          = image_tag current_user.image.thumb.url, class: "img_index", height: "50px", weight: "50px"
+
+          = image_tag(current_user.image.thumb.url, :class => "img-index", height: "50px", weight: "50px")
     .col-md-2.mini-profile-text
       - if user_signed_in?
         = current_user.username
