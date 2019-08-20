@@ -63,12 +63,43 @@
   border-radius:10px;
 
 }
-.profile_show{
-  padding-top: 40px;
+.profile-show{
+  padding: 40px;
+  margin-top: 10px;
+  border-width: 4px;
+  border-color: darkblue;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+.col-md-1.mini-profile-avatar{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+.col-md-2.mini-profile-text{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 10px;
 }
 header{
   padding: 10px;
 }
+.col-md-8.news-feed{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 10px;
+}
+.col-md-4.profile-avatar{
+  text-align: center;
+
+}
+
+.col-md-6.profile-info{
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
 .fa.fa-home.fa-fw {font-size: 30px;}
 .fa.fa-user.fa-fw {font-size: 30px;}
 .fa.fa-sign-out.fa-fw {font-size: 30px;}

@@ -1,14 +1,13 @@
-.container.profile_show
+.profile-show
   .row
-    .col-md-4.text-center
-      %p= link_to(image_tag(current_user.image.thumb.url, alt: 'Image'), current_user.image.url, target: '_blank') if current_user.image?
-    .col-md-8
+    .col-md-4.profile-avatar
+      %p= link_to(image_tag(current_user.image.thumb.url, alt: 'Image', :class => 'img-fluid rounded-circle'), current_user.image.url, target: '_blank') if current_user.image?
+    .col-md-6.profile-info
       %p
         = current_user.username
         | #{link_to 'Редактировать профиль', edit_user_registration_path}
       %p Друзей | Еще чего то там
       %p= current_user.profile.name
-    .col-md-8
   .row
     .col-md-3
     .col-md-3

@@ -1,12 +1,13 @@
-.container
-  %h1 Welcome to the Start Page
+%h1 Welcome to the Start Page
+- if user_signed_in?
   .row
-    .col-md-4
+    .col-md-8.news-feed
       %p News
-    .col-md-4.text-right
-      .row
+    - if user_signed_in? && current_user.image?
+      .col-md-1.mini-profile-avatar
         - if user_signed_in? && current_user.image?
           = image_tag current_user.image.thumb.url, class: "img_index", height: "50px", weight: "50px"
-          = current_user.username
-          %p= current_user.profile.name
-    .col-md-4.text-right
+    .col-md-2.mini-profile-text
+      - if user_signed_in?
+        = current_user.username
+        %p= current_user.profile.name
