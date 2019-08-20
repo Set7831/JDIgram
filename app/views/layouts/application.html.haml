@@ -20,9 +20,10 @@
                 .form-group
                   %input.form-control{:placeholder => "Найти", :type => "text"}/
                 %button.btn.btn-default{:type => "submit"} Поиск
-            %li.btn.btn-outline-primary
-              = link_to root_path do
-                %i.fa.fa-home.fa-fw
+            - if user_signed_in?
+              %li.btn.btn-outline-primary
+                = link_to root_path do
+                  %i.fa.fa-home.fa-fw
             - if user_signed_in?
               %li.btn.btn-outline-primary
                 = link_to profile_show_path(user_id: current_user.id,id: current_user.profile.id) do
