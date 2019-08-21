@@ -102,11 +102,16 @@ header{
   margin-right: 10px;
   margin-left: 15px;
 }
-.col-md-4.profile-photos{
+.col-md-3.profile-photos{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   margin-top: 10px;
   margin-right: 10px;
   padding: 25px;
+}
+.row.profile-photos{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .img-start-page{
   display: block;

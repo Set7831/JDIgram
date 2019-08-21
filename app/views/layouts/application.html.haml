@@ -26,7 +26,7 @@
                   %i.fa.fa-home.fa-fw
             - if user_signed_in?
               %li.btn.btn-outline-primary
-                = link_to profile_show_path(user_id: current_user.id,id: current_user.profile.id) do
+                = link_to show_profile_path(current_user) do
                   %i.fa.fa-user.fa-fw
               %li.btn.btn-outline-primary
                 = link_to destroy_user_session_path, method: :delete, class: "nav-link" do

@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @post = Post.all
     @user = User.where.not(id: current_user.id)
 
   end

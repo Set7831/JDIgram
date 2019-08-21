@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :users
-  resource :posts
+  resources :posts
 
   get '/home', to: 'home#index'
   get '/users/index', to: 'users#index'
-  get '/profile', to: 'profile#edit'
+  get '/profile/:id', to: 'profile#show', as: :show_profile
+  get '/profile/edit', to: 'profile#edit'
   patch '/profile', to: 'profile#update'
-  get '/profile/show', to: 'profile#show'
 
 
 

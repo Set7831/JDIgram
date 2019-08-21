@@ -1,27 +1,29 @@
-
 .profile-show
-   .row
-      .col-md-4.profile-avatar
-         %p= link_to(image_tag(@user.image.thumb.url, alt: 'Image', :class => 'img-fluid rounded-circle'), @user.image.url, target: '_blank') if @user.image?
-      .col-md-6.profile-info
-         %p
-         = @user.username
-         - if current_user.id == @user.id
-         = puts @user.id
-            = link_to "Редактировать профиль", edit_user_registration_path
-         %p Друзей | Еще чего то там
-         %p= @profile.name
-         - if current_user.id != @user.id
-            %p= @profile.surname
-         - if current_user.id == @user.id
-            =link_to 'Добавить фото', new_posts_path(user_id: @user.id)
+  .row
+    .col-md-4.profile-avatar
+      %p= link_to(image_tag(@user.image.thumb.url, alt: 'Image', :class => 'img-fluid rounded-circle'), @user.image.url, target: '_blank') if @user.image?
+    .col-md-6.profile-info
+      %p
+        = @user.username
+        - if current_user.id == @user.id
+          = puts @user.id
+          = link_to "Редактировать профиль", edit_user_registration_path
+        %p Друзей | Еще чего то там
+        %p= @profile.name
+        - if current_user.id != @user.id
+          %p= @profile.surname
+        - else
+          =link_to 'Добавить фото', new_post_path(id: @user.id)
 .profile-photo
-   .row
-      - @user.post.each do |post|
-         .col-md-4.profile-photos
-            = image_tag(post.image_post.thumb.url, :class => "img-index", height: "220px", weight: "220px")
-            %p= post.text
-            %hr
-
-
-      .col-md-4
+  .row.profile-photos
+    - @post.each do |post|
+      .col-md-3.profile-photos
+        = link_to(image_tag(post.image_post.thumb.url), '#', :class => "img-index", 'data-toggle' => 'modal', 'data-target' => "#myModal#{post.id}", height: "220px", weight: "220px")
+        .modal.fade{id: "myModal#{post.id}", "aria-hidden" => "true", "aria-labelledby" => "myModal#{post.id}", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog.modal-dialog-centered{:role => "document"}
+            .modal-content
+              .modal-body
+                %p= image_tag(post.image_post.thumb.url, :class => "img-index", height: "350px", weight: "350px")
+              .modal-footer
+                %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
+        %p= post.text

@@ -7,8 +7,9 @@ class ProfileController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @profile = Profile.find(params[:id])
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    @post = @user.posts
   end
 
   def update
@@ -27,6 +28,6 @@ class ProfileController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:email, :image, :password, :username, :password_confirmation, :current_password, profile_attributes: [:id, :surname, :name, :patronymic, :date_of_birth], posts_attributes: [:text, :image_post])
+    params.require(:profile).permit(:email, :image, :password, :username, :password_confirmation, :current_password, profile_attributes: [:id, :surname, :name, :patronymic, :date_of_birth], posts_attributes: [:text, :image_post])
   end
 end

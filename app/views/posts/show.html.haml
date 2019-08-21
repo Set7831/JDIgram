@@ -2,6 +2,5 @@
 .profile-show
    .row
       .col-md-4.profile-avatar
-         - @post.each do |post|
-            = image_tag(post.image_post.thumb.url, :class => "img-index", height: "50px", weight: "50px")
-            = post.image_post
+         = image_tag(@post.image_post.thumb.url, :class => "img-index", height: "450px", weight: "450px")
+         = @post.text

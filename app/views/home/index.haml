@@ -6,18 +6,24 @@
 
     .col-md-6.news-feed
       - @user.each do |user|
-        =link_to user.login, profile_show_path(id: user.profile.id, user_id: user.id)
+        =link_to user.login, show_profile_path(user)
         - if user_signed_in? && user.image.blank?
           %p
             Зарегистрировался: #{user.created_at}
         %br/
         - if user_signed_in? && user.image?
           %p
-            Добавил фотографию:
-          =image_tag user.image.thumb.url, class: "img-start-page", height: "200px", weight: "200px"
+            Изменил аватар:
+          = link_to(image_tag(user.image.thumb.url, :class => "img-start-page", height: "320px", weight: "220px"), '#', :class => "img-start-page", 'data-toggle' => 'modal', 'data-target' => "#myModal#{user.id}")
+          .modal.fade{id: "myModal#{user.id}", "aria-hidden" => "true", "aria-labelledby" => "myModal#{user.id}", :role => "dialog", :tabindex => "-1"}
+            .modal-dialog.modal-dialog-centered{:role => "document"}
+              .modal-content
+                .modal-body
+                  %p= image_tag(user.image.thumb.url, :class => "img-index", height: "350px", weight: "350px")
+                .modal-footer
+                  %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
 
         %hr
-
 
     - if user_signed_in? && current_user.image?
       .col-md-1.mini-profile-avatar

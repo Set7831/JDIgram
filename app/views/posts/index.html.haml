@@ -1,0 +1,6 @@
+%h1 Все posts
+%p
+  - @post.each do |post|
+    =link_to 'Пост', post_path(post)
+    =image_tag(post.image_post.thumb.url, :class => "img-index", height: "220px", weight: "220px")
+    %hr
