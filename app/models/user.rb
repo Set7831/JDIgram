@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+  has_many :post
+
   accepts_nested_attributes_for :profile #, :allow_destroy => true
 
   attr_writer :login

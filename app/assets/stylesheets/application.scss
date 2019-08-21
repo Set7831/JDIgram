@@ -75,6 +75,7 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   padding: 10px;
   border-radius: 10px;
+
 }
 .col-md-2.mini-profile-text{
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -89,6 +90,8 @@ header{
   margin-right: 10px;
   margin-left: 10px;
   padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .col-md-4.profile-avatar{
   text-align: center;
@@ -98,6 +101,12 @@ header{
 .col-md-6.profile-info{
   margin-right: 10px;
   margin-left: 15px;
+}
+.col-md-4.profile-photos{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 25px;
 }
 .img-start-page{
   display: block;

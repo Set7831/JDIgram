@@ -13,7 +13,15 @@
          %p= @profile.name
          - if current_user.id != @user.id
             %p= @profile.surname
-      .row
-      .col-md-3
-      .col-md-3
-      .col-md-3
+         - if current_user.id == @user.id
+            =link_to 'Добавить фото', new_posts_path(user_id: @user.id)
+.profile-photo
+   .row
+      - @user.post.each do |post|
+         .col-md-4.profile-photos
+            = image_tag(post.image_post.thumb.url, :class => "img-index", height: "220px", weight: "220px")
+            %p= post.text
+            %hr
+
+
+      .col-md-4

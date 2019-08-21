@@ -1,9 +1,10 @@
 %h1 News Feed
+= link_to 'POSTS' , posts_path(@post)
 - if user_signed_in?
+  = link_to 'USERS' , users_index_path
   .row
+
     .col-md-6.news-feed
-      = link_to 'USERS' , users_index_path
-      %hr
       - @user.each do |user|
         =link_to user.login, profile_show_path(id: user.profile.id, user_id: user.id)
         - if user_signed_in? && user.image.blank?
@@ -14,14 +15,13 @@
           %p
             Добавил фотографию:
           =image_tag user.image.thumb.url, class: "img-start-page", height: "200px", weight: "200px"
-        %br/
+
         %hr
 
 
     - if user_signed_in? && current_user.image?
       .col-md-1.mini-profile-avatar
         - if user_signed_in? && current_user.image?
-
           = image_tag(current_user.image.thumb.url, :class => "img-index", height: "50px", weight: "50px")
     .col-md-2.mini-profile-text
       - if user_signed_in?

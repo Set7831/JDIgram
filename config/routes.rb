@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :users
+  resource :posts
 
   get '/home', to: 'home#index'
   get '/users/index', to: 'users#index'

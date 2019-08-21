@@ -1,0 +1,17 @@
+%h2 Добавление фото
+= form_for :post, url: posts_path do |f|
+  .field
+    = f.label "Загрузить фото"
+    %br/
+    %img.hidden.image_to_upload/
+    %br/
+    %br/
+    = f.file_field :image_post, class: 'photo_upload'
+  %br/
+  .field
+    = f.label "Описание"
+    %br/
+    = f.text_area :text
+  %br/
+  .actions
+    = f.submit "Создать"
