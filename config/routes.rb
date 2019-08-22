@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :users
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 
   get '/home', to: 'home#index'
   get '/users/index', to: 'users#index'

@@ -27,3 +27,14 @@
               .modal-footer
                 %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
         %p= post.text
+        %hr
+        - pre_like = post.likes.find { |like| like.user_id == current_user.id}
+        - if pre_like
+          = link_to post_like_path(post, pre_like), method: :delete do
+            %i.fa.fa-heart.fa-fw.unlike
+        - else
+          = link_to post_likes_path(post), method: :post do
+            %i.fa.fa-heart.fa-fw.like
+        = post.likes.count
+
+

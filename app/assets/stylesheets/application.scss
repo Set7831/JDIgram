@@ -128,3 +128,9 @@ header{
 .fa.fa-sign-out.fa-fw {font-size: 30px;}
 .fa.fa-sign-in.fa-fw {font-size: 30px;}
 .fa.fa-user-plus.fa-fw {font-size: 30px;}
+.fa.fa-heart.fa-fw.like {
+  color: grey;
+}
+.fa.fa-heart.fa-fw.unlike {
+  color: red;
+}

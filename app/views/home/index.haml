@@ -22,6 +22,18 @@
                   %p= image_tag(user.image.thumb.url, :class => "img-index", height: "350px", weight: "350px")
                 .modal-footer
                   %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
+        - user.posts.each do |post|
+          - if user_signed_in? && post.image_post?
+            %p
+              Добавил фотографию:
+            = link_to(image_tag(post.image_post.thumb.url, :class => "img-start-page", height: "320px", weight: "220px"), '#', :class => "img-start-page", 'data-toggle' => 'modal', 'data-target' => "#myModal#{post.id}")
+            .modal.fade{id: "myModal#{post.id}", "aria-hidden" => "true", "aria-labelledby" => "myModal#{post.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog.modal-dialog-centered{:role => "document"}
+                .modal-content
+                  .modal-body
+                    %p= image_tag(post.image_post.thumb.url, :class => "img-index", height: "350px", weight: "350px")
+                  .modal-footer
+                    %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
 
         %hr
 
