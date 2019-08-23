@@ -1,0 +1,12 @@
+<div id="like-post-<%= post.id %>">
+  <% if User.already_liked?(current_user, post) %>
+    <%= link_to post_like_path(post), id: "unlike", method: :delete, remote: :true do %>
+      <i class="fa fa-heart fa-fw unlike"></i>
+    <% end %>
+  <% else %>
+    <%= link_to post_like_path(post),id: "like", method: :post, remote: :true do %>
+      <i class="fa fa-heart fa-fw like"></i>
+    <% end %>
+  <% end %>
+  <%= post.likes.count %>
+</div>

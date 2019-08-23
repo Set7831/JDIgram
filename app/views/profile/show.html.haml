@@ -17,24 +17,4 @@
 .profile-photo
   .row.profile-photos
     - @post.each do |post|
-      .col-md-3.profile-photos
-        = link_to(image_tag(post.image_post.thumb.url), '#', :class => "img-index", 'data-toggle' => 'modal', 'data-target' => "#myModal#{post.id}", height: "220px", weight: "220px")
-        .modal.fade{id: "myModal#{post.id}", "aria-hidden" => "true", "aria-labelledby" => "myModal#{post.id}", :role => "dialog", :tabindex => "-1"}
-          .modal-dialog.modal-dialog-centered{:role => "document"}
-            .modal-content
-              .modal-body
-                %p= image_tag(post.image_post.thumb.url, :class => "img-index", height: "350px", weight: "350px")
-              .modal-footer
-                %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
-        %p= post.text
-        %hr
-        - pre_like = post.likes.find { |like| like.user_id == current_user.id}
-        - if pre_like
-          = link_to post_like_path(post, pre_like), method: :delete do
-            %i.fa.fa-heart.fa-fw.unlike
-        - else
-          = link_to post_likes_path(post), method: :post do
-            %i.fa.fa-heart.fa-fw.like
-        = post.likes.count
-
-
+      =  render 'posts/post', post: post

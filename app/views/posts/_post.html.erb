@@ -1,0 +1,22 @@
+<div class="col-md-3 profile-photos">
+  <%= link_to(image_tag(post.image_post.thumb.url), '#', :class => "img-index", 'data-toggle' => 'modal', 'data-target' => "#myModal#{post.id}", height: "220px", weight: "220px") %>
+  <div aria-hidden="true" aria-labelledby="myModal<%= post.id %>" class="modal fade" id="myModal<%= post.id %>" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>
+          <%= image_tag(post.image_post.thumb.url, :class => "img-index", height: "350px", weight: "350px") %>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>
+    <%= post.text %>
+  </p>
+  <hr/>
+  <%= render 'likes/like_post', post: post %>
+</div>

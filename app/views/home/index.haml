@@ -26,6 +26,7 @@
           - if user_signed_in? && post.image_post?
             %p
               Добавил фотографию:
+            %br
             = link_to(image_tag(post.image_post.thumb.url, :class => "img-start-page", height: "320px", weight: "220px"), '#', :class => "img-start-page", 'data-toggle' => 'modal', 'data-target' => "#myModal#{post.id}")
             .modal.fade{id: "myModal#{post.id}", "aria-hidden" => "true", "aria-labelledby" => "myModal#{post.id}", :role => "dialog", :tabindex => "-1"}
               .modal-dialog.modal-dialog-centered{:role => "document"}
@@ -34,8 +35,15 @@
                     %p= image_tag(post.image_post.thumb.url, :class => "img-index", height: "350px", weight: "350px")
                   .modal-footer
                     %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Close
-
-        %hr
+            - pre_like = post.likes.find { |like| like.user_id == current_user.id}
+            - if pre_like
+              = link_to post_like_path(post, pre_like), method: :delete do
+                %i.fa.fa-heart.fa-fw.unlike
+            - else
+              = link_to post_likes_path(post), method: :post do
+                %i.fa.fa-heart.fa-fw.like
+            = post.likes.count
+          %hr
 
     - if user_signed_in? && current_user.image?
       .col-md-1.mini-profile-avatar

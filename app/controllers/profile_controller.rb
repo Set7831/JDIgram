@@ -25,6 +25,13 @@ class ProfileController < ApplicationController
     end
   end
 
+  def create
+    @selected = Profile.where(:post_id => params[:like_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def profile_params

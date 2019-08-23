@@ -28,6 +28,10 @@ class User < ApplicationRecord
     end
   end
 
+  def self.already_liked?(user, post)
+    Like.where('user_id = ? AND post_id = ?', user, post)
+  end
+
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 

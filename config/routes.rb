@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'profile#show', as: :show_profile
   get '/profile/edit', to: 'profile#edit'
   patch '/profile', to: 'profile#update'
+  #get "/likes_posts" => 'profile#from_like', as: :likes_posts
 
 
 
